@@ -1,0 +1,42 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace OpenIso8583Net.Tests
+{
+    [TestClass]
+    public class MinistatementDataTests
+    {
+        [TestMethod]
+        public void TestUnpackCount()
+        {
+            const string data = "DATE_TIME|TRAN_TYPE|FROM_ACC|TO_ACC|TRAN_AMOUNT|CURR_CODE|ACC_ID1|ACC_ID2~20100713165132|00|70||000000000010|840|8564731000057910~20100713164951|00|70||000000000010|840|8564731000057910~20100713164241|21||70|000000000010|840||8564731000057910~20100713161332|00|70||000000000010|840|8564731000057910~20100713161055|00|70||000000000010|840|8564731000057910~20100708153052|00|70||000000000010|840|8564731000057910~20100708152803|00|70||000000010000|840|8564731000057910~20100708144054|00|70||000000010000|840|8564731000057910~20100708083547|00|70||000000010000|840|8564731000057910~20100708083321|00|70||000000010000|840|8564731000057910~";
+            var msd = new MinistatementData();
+            msd.FromMsg(data);
+            const int expected = 10;
+            var actual = msd.Count;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestUnpack()
+        {
+            const string data = "DATE_TIME|TRAN_TYPE|FROM_ACC|TO_ACC|TRAN_AMOUNT|CURR_CODE|ACC_ID1|ACC_ID2~20100713165132|00|70||000000000010|840|8564731000057910~20100713164951|00|70||000000000010|840|8564731000057910~20100713164241|21||70|000000000010|840||8564731000057910~20100713161332|00|70||000000000010|840|8564731000057910~20100713161055|00|70||000000000010|840|8564731000057910~20100708153052|00|70||000000000010|840|8564731000057910~20100708152803|00|70||000000010000|840|8564731000057910~20100708144054|00|70||000000010000|840|8564731000057910~20100708083547|00|70||000000010000|840|8564731000057910~20100708083321|00|70||000000010000|840|8564731000057910~";
+            var msd = new MinistatementData();
+            msd.FromMsg(data);
+            var line = msd[0];
+
+            var fieldsCount = line.Count;
+            const int expected = 8;
+
+            Assert.AreEqual(expected, fieldsCount);
+
+            Assert.AreEqual("20100713165132", line["DATE_TIME"]);
+            Assert.AreEqual("00", line["TRAN_TYPE"]);
+            Assert.AreEqual("70", line["FROM_ACC"]);
+            Assert.IsNull(line["TO_ACC"]);
+            Assert.AreEqual("000000000010", line["TRAN_AMOUNT"]);
+            Assert.AreEqual("840", line["CURR_CODE"]);
+            Assert.AreEqual("8564731000057910", line["ACC_ID1"]);
+            Assert.IsNull(line["ACC_ID2"]);
+        }
+    }
+}

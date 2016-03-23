@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{051350C0-1587-4EA7-9560-415940B6626B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenIso8583Net.Tests</RootNamespace>
+    <AssemblyName>OpenIso8583Net.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="AdditionalAmountTest.cs" />
+    <Compile Include="BcdFieldTests.cs" />
+    <Compile Include="BcdFixedFieldTest.cs" />
+    <Compile Include="BcdFormatterTests.cs" />
+    <Compile Include="BcdVariableFieldTests.cs" />
+    <Compile Include="BcMsgTypeTests.cs" />
+    <Compile Include="BinaryFieldFormatterTest.cs" />
+    <Compile Include="BinaryFixedFieldTests.cs" />
+    <Compile Include="BitmapAsciiTests.cs" />
+    <Compile Include="BitmapTests.cs" />
+    <Compile Include="Emv\EmvTagsTests.cs" />
+    <Compile Include="Emv\LongTagTests.cs" />
+    <Compile Include="Emv\TagMaskingTests.cs" />
+    <Compile Include="FieldDescriptorTests.cs" />
+    <Compile Include="FixedFieldTests.cs" />
+    <Compile Include="FixedLengthValidatorTests.cs" />
+    <Compile Include="HashtableMessageTest.cs" />
+    <Compile Include="Iso8583BinaryMsgTypeTests.cs" />
+    <Compile Include="Iso8583PostTests.cs" />
+    <Compile Include="Iso8583Rev93Tests.cs" />
+    <Compile Include="Iso8583Tests.cs" />
+    <Compile Include="IsoConvertTests.cs" />
+    <Compile Include="LengthFormatters\TestFixedLengthFormatter.cs" />
+    <Compile Include="LengthFormatters\TestVariableLengthFormatter.cs" />
+    <Compile Include="MinistatementDataTests.cs" />
+    <Compile Include="NetworkHeaders\TestTwoByteHeader.cs" />
+    <Compile Include="ProcessingCodeTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TermAppIso\AdditionalDataTests.cs" />
+    <Compile Include="TermAppIso\SecurityInfoFieldTests.cs" />
+    <Compile Include="TermAppIso\StructuredDataTests.cs" />
+    <Compile Include="TermAppIso\TermAppIsoUnpackTests.cs" />
+    <Compile Include="TermAppIso\TermAppIsoPackTests.cs" />
+    <Compile Include="TestMessages\BCDIsoMsg.cs" />
+    <Compile Include="TestMessages\IsoMsgBinaryMsgTypeFormatter.cs" />
+    <Compile Include="UtilsTest.cs" />
+    <Compile Include="ValidatorTests\AlphaNumericPrintableValidatorTests.cs" />
+    <Compile Include="ValidatorTests\AlphaNumericSpecialValidatorTests.cs" />
+    <Compile Include="ValidatorTests\AlphaNumericValidatorTests.cs" />
+    <Compile Include="ValidatorTests\AlphaOrNumericValidatorTests.cs" />
+    <Compile Include="ValidatorTests\AlphaValidatorTests.cs" />
+    <Compile Include="ValidatorTests\BaseValidatorTests.cs" />
+    <Compile Include="ValidatorTests\HexValidatorTests.cs" />
+    <Compile Include="ValidatorTests\NoneValidatorTests.cs" />
+    <Compile Include="ValidatorTests\NumericValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Rev87AmountValidatorTests.cs" />
+    <Compile Include="ValidatorTests\Track2ValidatorTests.cs" />
+    <Compile Include="VariableFieldTests.cs" />
+    <Compile Include="VariableLengthValidatorTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenIso8583Net\OpenIso8583Net.csproj">
+      <Project>{87a6c762-3ced-441c-8b87-c8d39eb7e3a5}</Project>
+      <Name>OpenIso8583Net</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

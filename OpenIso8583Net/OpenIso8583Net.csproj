@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{87A6C762-3CED-441C-8B87-C8D39EB7E3A5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenIso8583Net</RootNamespace>
+    <AssemblyName>OpenIso8583Net</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\OpenIso8583Net.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\OpenIso8583Net.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdditionalAmount.cs" />
+    <Compile Include="Adjuster.cs" />
+    <Compile Include="AMessage.cs" />
+    <Compile Include="Bitmap.cs" />
+    <Compile Include="Crypto\Iso0PinBlockFormatter.cs" />
+    <Compile Include="Emv\EmvTags.cs" />
+    <Compile Include="Emv\EmvUtils.cs" />
+    <Compile Include="Emv\NamespaceDoc.cs" />
+    <Compile Include="Emv\Tag.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="EuropayMessage.cs" />
+    <Compile Include="Exceptions\FieldDescriptorException.cs" />
+    <Compile Include="Exceptions\FieldFormatException.cs" />
+    <Compile Include="Exceptions\FieldLengthException.cs" />
+    <Compile Include="Exceptions\FormatException.cs" />
+    <Compile Include="Exceptions\UnknownFieldException.cs" />
+    <Compile Include="Field.cs" />
+    <Compile Include="Field127.cs" />
+    <Compile Include="FieldDescriptor.cs" />
+    <Compile Include="FieldValidator\AlphaFieldValidator.cs" />
+    <Compile Include="FieldValidator\AlphaNumericAndSpaceFieldValidator.cs" />
+    <Compile Include="FieldValidator\AlphaNumericFieldValidator.cs" />
+    <Compile Include="FieldValidator\AlphaNumericPrintableFieldValidator.cs" />
+    <Compile Include="FieldValidator\AlphaNumericSpecialFieldValidator.cs" />
+    <Compile Include="FieldValidator\AlphaOrNumericFieldValidator.cs" />
+    <Compile Include="FieldValidator\FieldValidators.cs" />
+    <Compile Include="FieldValidator\HexFieldValidator.cs" />
+    <Compile Include="FieldValidator\IFieldValidator.cs" />
+    <Compile Include="FieldValidator\NoneFieldValidator.cs" />
+    <Compile Include="FieldValidator\NumericFieldValidator.cs" />
+    <Compile Include="FieldValidator\Rev87AmountFieldValidator.cs" />
+    <Compile Include="FieldValidator\Track2FieldValidator.cs" />
+    <Compile Include="Formatter\AsciiFormatter.cs" />
+    <Compile Include="Formatter\BcdFormatter.cs" />
+    <Compile Include="Formatter\BinaryFormatter.cs" />
+    <Compile Include="Formatter\Formatters.cs" />
+    <Compile Include="Formatter\IFormatter.cs" />
+    <Compile Include="HashtableMessage.cs" />
+    <Compile Include="IField.cs" />
+    <Compile Include="IFieldDescriptor.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="Iso8583.cs" />
+    <Compile Include="Iso8583Post.cs" />
+    <Compile Include="Iso8583Rev93.cs" />
+    <Compile Include="IsoConvert.cs" />
+    <Compile Include="LambdaAdjuster.cs" />
+    <Compile Include="LengthFormatters\FixedLengthFormatter.cs" />
+    <Compile Include="LengthFormatters\ILengthFormatter.cs" />
+    <Compile Include="LengthFormatters\VariableLengthFormatter.cs" />
+    <Compile Include="LengthValidators\FixedLengthValidator.cs" />
+    <Compile Include="LengthValidators\ILengthValidator.cs" />
+    <Compile Include="LengthValidators\VariableLengthValidator.cs" />
+    <Compile Include="MinistatementData.cs" />
+    <Compile Include="Ministatementline.cs" />
+    <Compile Include="NetworkHeaders\INetworkHeader.cs" />
+    <Compile Include="NetworkHeaders\TwoByteHeader.cs" />
+    <Compile Include="PanMaskDecorator.cs" />
+    <Compile Include="ProcessingCode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="TermAppIso\AdditionalData.cs" />
+    <Compile Include="TermAppIso\Iso8583TermApp.cs" />
+    <Compile Include="TransmissionDateTime.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="Validators.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
