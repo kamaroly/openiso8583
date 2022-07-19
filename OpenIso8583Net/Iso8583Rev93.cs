@@ -43,7 +43,7 @@ namespace OpenIso8583Net
                     { Bit._044_ADDITIONAL_RESPONSE_DATA, FieldDescriptor.AsciiVar(2, 99, FieldValidators.Ans) },
                     { Bit._045_TRACK_1_DATA, FieldDescriptor.AsciiVar(2, 76, FieldValidators.Ans) },
                     { Bit._046_FEES_AMOUNTS, FieldDescriptor.AsciiVar(3, 204, FieldValidators.Ans) },
-                    { Bit._048_PRIVATE_ADDITIONAL_DATA, FieldDescriptor.AsciiVar(4, 9999, FieldValidators.Ans) },
+                    { Bit._048_PRIVATE_ADDITIONAL_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
                     { Bit._049_TRAN_CURRENCY_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
                     { Bit._050_SETTLEMENT_CURRENCY_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
                     { Bit._052_PIN_DATA, FieldDescriptor.AsciiFixed(16, FieldValidators.Hex) },
