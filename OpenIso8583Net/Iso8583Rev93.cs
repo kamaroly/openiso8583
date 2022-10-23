@@ -28,6 +28,7 @@ namespace OpenIso8583Net
                     { Bit._022_POS_DATA_CODE, FieldDescriptor.AsciiFixed(15, FieldValidators.Ans) },
                     { Bit._023_CARD_SEQ_NR, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
                     { Bit._024_FUNC_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
+                    { Bit._025_MSG_REASON_CODE, FieldDescriptor.AsciiFixed(4, FieldValidators.N) },
                     { Bit._027_APPROVAL_CODE_LEN, FieldDescriptor.AsciiFixed(1, FieldValidators.N) },
                     { Bit._028_RECON_DATE, FieldDescriptor.AsciiFixed(6, FieldValidators.N) },
                     { Bit._029_RECON_INDICATOR, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
