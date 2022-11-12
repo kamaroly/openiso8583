@@ -36,7 +36,15 @@ namespace OpenIso8583Net
         #endregion
 
         #region Constructors and Destructors
-
+        
+        /// <summary>
+        /// XML Parameterless constructor, compatibility purposes only.
+        /// </summary>
+        protected AMessage()
+        {
+            fields = new Dictionary<int, IField>();
+            bitmap = new Bitmap();
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="AMessage"/> class.
         /// </summary>

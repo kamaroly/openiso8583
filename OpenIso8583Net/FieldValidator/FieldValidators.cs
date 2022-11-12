@@ -1,4 +1,6 @@
-﻿namespace OpenIso8583Net.FieldValidator
+﻿using OpenIso8583Net.IFSF;
+
+namespace OpenIso8583Net.FieldValidator
 {
     /// <summary>
     ///   Static class returning the various field validators
@@ -134,11 +136,27 @@
         }
 
         /// <summary>
+        ///   Get a field validator to validate track 1 data
+        /// </summary>
+        public static IFieldValidator Track1
+        {
+            get { return new Track2FieldValidator(); }
+        }
+
+        /// <summary>
         ///   Get a field validator to validate track 2 data
         /// </summary>
         public static IFieldValidator Track2
         {
             get { return new Track2FieldValidator(); }
+        }
+
+        /// <summary>
+        ///   Get a field validator to validate track 3 data
+        /// </summary>
+        public static IFieldValidator Track3
+        {
+            get { return new Track3FieldValidator(); }
         }
 
         /// <summary>

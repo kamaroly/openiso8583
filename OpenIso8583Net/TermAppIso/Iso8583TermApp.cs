@@ -2,9 +2,6 @@
 using OpenIso8583Net.Formatter;
 using OpenIso8583Net.LengthFormatters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OpenIso8583Net.TermAppIso
 {
@@ -86,7 +83,7 @@ namespace OpenIso8583Net.TermAppIso
                     { Bit._110_FEE_AMOUNTS_DEBITS, FieldDescriptor.AsciiVar(2, 84, FieldValidators.Ans) },
                     { Bit._123_RECEIPT_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
                     { Bit._124_DISPLAY_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
-                    { Bit._128_MAC, FieldDescriptor.AsciiFixed(16, FieldValidators.Hex) },
+                    { Bit._128_MAC, FieldDescriptor.AsciiFixed(16, FieldValidators.Hex) }
                 };
             binaryTemplate.BitmapFormatter = Formatters.Binary;
 
@@ -161,7 +158,7 @@ namespace OpenIso8583Net.TermAppIso
                     { Bit._110_FEE_AMOUNTS_DEBITS, FieldDescriptor.AsciiVar(2, 84, FieldValidators.Ans) },
                     { Bit._123_RECEIPT_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
                     { Bit._124_DISPLAY_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
-                    { Bit._128_MAC, FieldDescriptor.AsciiFixed(16, FieldValidators.Hex) },
+                    { Bit._128_MAC, FieldDescriptor.AsciiFixed(16, FieldValidators.Hex) }
                 };
             asciiTemplate.BitmapFormatter = Formatters.Ascii;
         }

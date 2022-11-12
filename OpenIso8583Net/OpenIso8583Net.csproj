@@ -81,6 +81,19 @@
     <Compile Include="HashtableMessage.cs" />
     <Compile Include="IField.cs" />
     <Compile Include="IFieldDescriptor.cs" />
+    <Compile Include="IFSF\FieldFormatters\AField.cs" />
+    <Compile Include="IFSF\FieldFormatters\AsciiFieldFormatter.cs" />
+    <Compile Include="IFSF\FieldFormatters\BinaryFieldFormatter.cs" />
+    <Compile Include="IFSF\FieldFormatters\BinaryFixedField.cs" />
+    <Compile Include="IFSF\FieldFormatters\CustomField62.cs" />
+    <Compile Include="IFSF\FieldFormatters\FixedField.cs" />
+    <Compile Include="IFSF\FieldFormatters\IFieldFormatter.cs" />
+    <Compile Include="IFSF\FieldFormatters\VariableField.cs" />
+    <Compile Include="IFSF\FieldFormatters\VariableFieldRaw.cs" />
+    <Compile Include="IFSF\OilValidators\Track1FieldValidator.cs" />
+    <Compile Include="IFSF\IfsfFields\IfsfField48.cs" />
+    <Compile Include="IFSF\Iso8583Ifsf.cs" />
+    <Compile Include="IFSF\OilValidators\Track3FieldValidator.cs" />
     <Compile Include="IMessage.cs" />
     <Compile Include="Iso8583.cs" />
     <Compile Include="Iso8583Post.cs" />
@@ -107,7 +120,6 @@
     <Compile Include="Utils.cs" />
     <Compile Include="Validators.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

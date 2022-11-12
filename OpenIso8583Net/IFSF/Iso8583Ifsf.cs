@@ -1,98 +1,95 @@
-﻿using OpenIso8583Net.FieldValidator;
+using OpenIso8583Net.FieldValidator;
+using OpenIso8583Net.IFSF.IfsfFields;
 
-namespace OpenIso8583Net
+namespace OpenIso8583Net.IFSF
 {
-    /// <summary>
-    ///   Generic Implmentable ISO 8583 Revision 93 class
-    /// </summary>
-    public class Iso8583Rev93 : Iso8583
+    public class Iso8583Ifsf : Iso8583Rev93
     {
         private static readonly Template DefaultTemplate;
 
-        static Iso8583Rev93()
+        static Iso8583Ifsf()
         {
-            // TODO There are some TermApp.ISO specific fields in here.  Need to remove them so as to conform to the spec.
             DefaultTemplate =
                 new Template
                 {
-                    { Bit._002_PAN, FieldDescriptor.AsciiVar(2, 19, FieldValidators.N) },
-                    { Bit._003_PROC_CODE, FieldDescriptor.AsciiFixed(6, FieldValidators.N) },
-                    { Bit._004_TRAN_AMOUNT, FieldDescriptor.AsciiFixed(12, FieldValidators.N) },
-                    { Bit._005_SETTLE_AMOUNT, FieldDescriptor.AsciiFixed(12, FieldValidators.N) },
-                    { Bit._007_TRAN_DATE_TIME, FieldDescriptor.AsciiFixed(10, FieldValidators.N) },
-                    { Bit._009_CONVERSION_RATE_SETTLEMENT, FieldDescriptor.AsciiFixed(8, FieldValidators.N) },
-                    { Bit._011_SYS_TRACE_AUDIT_NUM, FieldDescriptor.AsciiFixed(6, FieldValidators.N) },
-                    { Bit._012_LOCAL_TRAN_DATETIME, FieldDescriptor.AsciiFixed(12, FieldValidators.N) },
-                    { Bit._014_EXPIRY_DATE, FieldDescriptor.AsciiFixed(4, FieldValidators.N) },
-                    { Bit._016_CONVERSION_DATE, FieldDescriptor.AsciiFixed(4, FieldValidators.N) },
-                    { Bit._022_POS_DATA_CODE, FieldDescriptor.AsciiFixed(15, FieldValidators.Ans) },
-                    { Bit._023_CARD_SEQ_NR, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._024_FUNC_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._025_MSG_REASON_CODE, FieldDescriptor.AsciiFixed(4, FieldValidators.N) },
-                    { Bit._026_POS_PIN_CAPTURE_CODE, FieldDescriptor.AsciiFixed(2, FieldValidators.N) },
-                    { Bit._027_APPROVAL_CODE_LEN, FieldDescriptor.AsciiFixed(1, FieldValidators.N) },
-                    { Bit._028_RECON_DATE, FieldDescriptor.AsciiFixed(6, FieldValidators.N) },
-                    { Bit._029_RECON_INDICATOR, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._030_AMOUNTS_ORIGINAL, FieldDescriptor.AsciiFixed(24, FieldValidators.N) },
-                    { Bit._032_ACQ_INST_ID_CODE, FieldDescriptor.AsciiVar(2, 11, FieldValidators.N) },
-                    { Bit._035_TRACK_2_DATA, FieldDescriptor.AsciiVar(2, 37, FieldValidators.Track2) },
-                    { Bit._037_RET_REF_NR, FieldDescriptor.AsciiFixed(12, FieldValidators.Anp) },
-                    { Bit._038_APPROVAL_CODE, FieldDescriptor.AsciiFixed(6, FieldValidators.Anp) },
-                    { Bit._039_ACTION_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._040_SERVICE_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._041_TERMINAL_ID, FieldDescriptor.AsciiFixed(8, FieldValidators.Ans) },
-                    { Bit._042_CARD_ACCEPTOR_ID, FieldDescriptor.AsciiFixed(15, FieldValidators.Ans) },
-                    { Bit._044_ADDITIONAL_RESPONSE_DATA, FieldDescriptor.AsciiVar(2, 99, FieldValidators.Ans) },
-                    { Bit._045_TRACK_1_DATA, FieldDescriptor.AsciiVar(2, 76, FieldValidators.Ans) },
-                    { Bit._046_FEES_AMOUNTS, FieldDescriptor.AsciiVar(3, 204, FieldValidators.Ans) },
-                    { Bit._048_PRIVATE_ADDITIONAL_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
-                    { Bit._049_TRAN_CURRENCY_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._050_SETTLEMENT_CURRENCY_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._052_PIN_DATA, FieldDescriptor.AsciiFixed(16, FieldValidators.Hex) },
-                    { Bit._053_SECURITY_INFO, FieldDescriptor.AsciiVar(2, 96, FieldValidators.Hex) },
-                    { Bit._054_ADDITIONAL_AMOUNTS, FieldDescriptor.AsciiVar(2, 96, FieldValidators.Hex) },
-                    { Bit._055_ICC_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Hex) },
-                    { Bit._056_ORIG_DATA_ELEMENTS, FieldDescriptor.AsciiVar(2, 35, FieldValidators.N) },
-                    { Bit._057_AUTH_LIFE_CYCLE_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N) },
-                    { Bit._058_AUTH_AGENT_INST_ID_CODE, FieldDescriptor.AsciiVar(2, 11, FieldValidators.N) },
-                    { Bit._059_ECHO_DATA, FieldDescriptor.AsciiVar(3, 200, FieldValidators.Ans) },
-                    { Bit._062_HOTCARD_CAPACITY, FieldDescriptor.AsciiVar(3, 5, FieldValidators.N) },
-                    { Bit._063_TERMAPP_PRIVATE_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Hex) },
-                    { Bit._064_MAC, FieldDescriptor.AsciiFixed(8, FieldValidators.Hex) },
-                    { Bit._066_ORIGINAL_FEES_AMOUNTS, FieldDescriptor.AsciiVar(3, 204, FieldValidators.Ans) },
-                    { Bit._067_EXT_PAYMENT_DATA, FieldDescriptor.AsciiFixed(2, FieldValidators.N) },
-                    { Bit._071_MSG_NR, FieldDescriptor.AsciiFixed(8, FieldValidators.N) },
-                    { Bit._072_DATA_RECORD, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
-                    { Bit._074_NR_CREDITS, FieldDescriptor.AsciiFixed(10, FieldValidators.N) },
-                    { Bit._075_NR_CREDITS_REVERSAL, FieldDescriptor.AsciiFixed(10, FieldValidators.N) },
-                    { Bit._076_NR_DEBITS, FieldDescriptor.AsciiFixed(10, FieldValidators.N) },
-                    { Bit._077_NR_DEBITS_REVERSAL, FieldDescriptor.AsciiFixed(10, FieldValidators.N) },
-                    { Bit._081_NR_AUTHS, FieldDescriptor.AsciiFixed(10, FieldValidators.N) },
-                    { Bit._086_AMOUNT_CREDITS, FieldDescriptor.AsciiFixed(16, FieldValidators.N) },
-                    { Bit._087_AMOUNT_CREDITS_REVERSAL, FieldDescriptor.AsciiFixed(16, FieldValidators.N) },
-                    { Bit._088_AMOUNT_DEBITS, FieldDescriptor.AsciiFixed(16, FieldValidators.N) },
-                    { Bit._089_AMOUNT_DEBITS_REVERSAL, FieldDescriptor.AsciiFixed(16, FieldValidators.N) },
-                    { Bit._090_NR_AUTHS_REVERSAL, FieldDescriptor.AsciiFixed(10, FieldValidators.N) },
-                    { Bit._096_KEY_MANAGEMENT_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
-                    { Bit._097_AMOUNT_NET_RECON, FieldDescriptor.AsciiFixed(17, FieldValidators.An) },
-                    { Bit._098_PAYEE, FieldDescriptor.AsciiFixed(25, FieldValidators.Ans) },
-                    { Bit._100_RECEIVING_INST_ID_CODE, FieldDescriptor.AsciiVar(2, 11, FieldValidators.N) },
-                    { Bit._101_FILE_NAME, FieldDescriptor.AsciiVar(2, 99, FieldValidators.Ans) },
-                    { Bit._102_ACCOUNT_ID_1, FieldDescriptor.AsciiVar(2, 28, FieldValidators.Ans) },
-                    { Bit._103_ACCOUNT_ID_2, FieldDescriptor.AsciiVar(2, 28, FieldValidators.Ans) },
-                    { Bit._104_TRAN_DESCRIPTION, FieldDescriptor.AsciiVar(4, 9999, FieldValidators.Ans) },
-                    { Bit._109_FEE_AMOUNTS_CREDITS, FieldDescriptor.AsciiVar(2, 84, FieldValidators.Ans) },
-                    { Bit._110_FEE_AMOUNTS_DEBITS, FieldDescriptor.AsciiVar(2, 84, FieldValidators.Ans) },
-                    { Bit._123_RECEIPT_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
-                    { Bit._124_DISPLAY_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans) },
-                    { Bit._128_MAC, FieldDescriptor.AsciiFixed(8, FieldValidators.Hex) },
+                    {Bit._002_PAN, FieldDescriptor.AsciiVar(2, 19, FieldValidators.N)},
+                    {Bit._003_PROC_CODE, FieldDescriptor.AsciiFixed(6, FieldValidators.N)},
+                    {Bit._004_TRAN_AMOUNT, FieldDescriptor.AsciiFixed(12, FieldValidators.N)},
+                    {Bit._005_SETTLE_AMOUNT, FieldDescriptor.AsciiFixed(12, FieldValidators.N)},
+                    {Bit._007_TRAN_DATE_TIME, FieldDescriptor.AsciiFixed(10, FieldValidators.N)},
+                    {Bit._009_CONVERSION_RATE_SETTLEMENT, FieldDescriptor.AsciiFixed(8, FieldValidators.N)},
+                    {Bit._011_SYS_TRACE_AUDIT_NUM, FieldDescriptor.AsciiFixed(6, FieldValidators.N)},
+                    {Bit._012_LOCAL_TRAN_DATETIME, FieldDescriptor.AsciiFixed(12, FieldValidators.N)},
+                    {Bit._014_EXPIRY_DATE, FieldDescriptor.AsciiFixed(4, FieldValidators.N)},
+                    {Bit._016_CONVERSION_DATE, FieldDescriptor.AsciiFixed(4, FieldValidators.N)},
+                    {Bit._022_POS_DATA_CODE, FieldDescriptor.AsciiFixed(12, FieldValidators.Ans)},
+                    {Bit._023_CARD_SEQ_NR, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._024_FUNC_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._025_MSG_REASON_CODE, FieldDescriptor.AsciiFixed(4, FieldValidators.N)},
+                    {Bit._026_CARD_ACCEPTOR_BUSINESS_CODE, FieldDescriptor.AsciiFixed(4, FieldValidators.N)},
+                    {Bit._027_APPROVAL_CODE_LEN, FieldDescriptor.AsciiFixed(1, FieldValidators.N)},
+                    {Bit._028_RECON_DATE, FieldDescriptor.AsciiFixed(6, FieldValidators.N)},
+                    {Bit._029_RECON_INDICATOR, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._030_AMOUNTS_ORIGINAL, FieldDescriptor.AsciiFixed(24, FieldValidators.N)},
+                    {Bit._032_ACQ_INST_ID_CODE, FieldDescriptor.AsciiVar(2, 11, FieldValidators.N)},
+                    {Bit._035_TRACK_2_DATA, FieldDescriptor.AsciiVar(2, 37, FieldValidators.Track2)},
+                    {Bit._037_RET_REF_NR, FieldDescriptor.AsciiFixed(12, FieldValidators.Anp)},
+                    {Bit._038_APPROVAL_CODE, FieldDescriptor.AsciiFixed(6, FieldValidators.Anp)},
+                    {Bit._039_ACTION_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._040_SERVICE_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._041_TERMINAL_ID, FieldDescriptor.AsciiFixed(8, FieldValidators.Ans)},
+                    {Bit._042_CARD_ACCEPTOR_ID, FieldDescriptor.AsciiFixed(15, FieldValidators.Ans)},
+                    {Bit._044_ADDITIONAL_RESPONSE_DATA, FieldDescriptor.AsciiVar(2, 99, FieldValidators.Ans)},
+                    {Bit._045_TRACK_1_DATA, FieldDescriptor.AsciiVar(2, 76, FieldValidators.Ans)},
+                    {Bit._046_FEES_AMOUNTS, FieldDescriptor.AsciiVar(3, 204, FieldValidators.Ans)},
+                    {Bit._048_MSG_CONTROL_DATA_ELEMENTS, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans)},
+                    {Bit._049_TRAN_CURRENCY_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._050_SETTLEMENT_CURRENCY_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._052_PIN_DATA, FieldDescriptor.AsciiFixed(16, FieldValidators.Hex)},
+                    {Bit._053_SECURITY_INFO, FieldDescriptor.AsciiVar(2, 96, FieldValidators.Hex)},
+                    {Bit._054_ADDITIONAL_AMOUNTS, FieldDescriptor.AsciiVar(2, 96, FieldValidators.Hex)},
+                    {Bit._055_ICC_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Hex)},
+                    {Bit._056_ORIG_DATA_ELEMENTS, FieldDescriptor.AsciiVar(2, 35, FieldValidators.N)},
+                    {Bit._057_AUTH_LIFE_CYCLE_CODE, FieldDescriptor.AsciiFixed(3, FieldValidators.N)},
+                    {Bit._058_AUTH_AGENT_INST_ID_CODE, FieldDescriptor.AsciiVar(2, 11, FieldValidators.N)},
+                    {Bit._059_ECHO_DATA, FieldDescriptor.AsciiVar(3, 200, FieldValidators.Ans)},
+                    {Bit._062_HOTCARD_CAPACITY, FieldDescriptor.AsciiVar(3, 5, FieldValidators.N)},
+                    {Bit._063_TERMAPP_PRIVATE_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Hex)},
+                    {Bit._064_MAC, FieldDescriptor.AsciiFixed(8, FieldValidators.Hex)},
+                    {Bit._066_ORIGINAL_FEES_AMOUNTS, FieldDescriptor.AsciiVar(3, 204, FieldValidators.Ans)},
+                    {Bit._067_EXT_PAYMENT_DATA, FieldDescriptor.AsciiFixed(2, FieldValidators.N)},
+                    {Bit._071_MSG_NR, FieldDescriptor.AsciiFixed(8, FieldValidators.N)},
+                    {Bit._072_DATA_RECORD, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans)},
+                    {Bit._074_NR_CREDITS, FieldDescriptor.AsciiFixed(10, FieldValidators.N)},
+                    {Bit._075_NR_CREDITS_REVERSAL, FieldDescriptor.AsciiFixed(10, FieldValidators.N)},
+                    {Bit._076_NR_DEBITS, FieldDescriptor.AsciiFixed(10, FieldValidators.N)},
+                    {Bit._077_NR_DEBITS_REVERSAL, FieldDescriptor.AsciiFixed(10, FieldValidators.N)},
+                    {Bit._081_NR_AUTHS, FieldDescriptor.AsciiFixed(10, FieldValidators.N)},
+                    {Bit._086_AMOUNT_CREDITS, FieldDescriptor.AsciiFixed(16, FieldValidators.N)},
+                    {Bit._087_AMOUNT_CREDITS_REVERSAL, FieldDescriptor.AsciiFixed(16, FieldValidators.N)},
+                    {Bit._088_AMOUNT_DEBITS, FieldDescriptor.AsciiFixed(16, FieldValidators.N)},
+                    {Bit._089_AMOUNT_DEBITS_REVERSAL, FieldDescriptor.AsciiFixed(16, FieldValidators.N)},
+                    {Bit._090_NR_AUTHS_REVERSAL, FieldDescriptor.AsciiFixed(10, FieldValidators.N)},
+                    {Bit._096_KEY_MANAGEMENT_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans)},
+                    {Bit._097_AMOUNT_NET_RECON, FieldDescriptor.AsciiFixed(17, FieldValidators.An)},
+                    {Bit._098_PAYEE, FieldDescriptor.AsciiFixed(25, FieldValidators.Ans)},
+                    {Bit._100_RECEIVING_INST_ID_CODE, FieldDescriptor.AsciiVar(2, 11, FieldValidators.N)},
+                    {Bit._101_FILE_NAME, FieldDescriptor.AsciiVar(2, 99, FieldValidators.Ans)},
+                    {Bit._102_ACCOUNT_ID_1, FieldDescriptor.AsciiVar(2, 28, FieldValidators.Ans)},
+                    {Bit._103_ACCOUNT_ID_2, FieldDescriptor.AsciiVar(2, 28, FieldValidators.Ans)},
+                    {Bit._104_TRAN_DESCRIPTION, FieldDescriptor.AsciiVar(4, 9999, FieldValidators.Ans)},
+                    {Bit._109_FEE_AMOUNTS_CREDITS, FieldDescriptor.AsciiVar(2, 84, FieldValidators.Ans)},
+                    {Bit._110_FEE_AMOUNTS_DEBITS, FieldDescriptor.AsciiVar(2, 84, FieldValidators.Ans)},
+                    {Bit._123_RECEIPT_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans)},
+                    {Bit._124_DISPLAY_DATA, FieldDescriptor.AsciiVar(3, 999, FieldValidators.Ans)},
+                    {Bit._128_MAC, FieldDescriptor.AsciiFixed(8, FieldValidators.Hex)}
                 };
         }
 
         /// <summary>
         ///   Creates a new instance of the Iso8583 class
         /// </summary>
-        public Iso8583Rev93()
+        public Iso8583Ifsf()
             : this(DefaultTemplate)
         {
         }
@@ -101,10 +98,46 @@ namespace OpenIso8583Net
         ///   Create a new instance of the Iso8583Rev93 class with the specified template overrides
         /// </summary>
         /// <param name = "template">Template override</param>
-        public Iso8583Rev93(Template template)
+        public Iso8583Ifsf(Template template)
             : base(template)
         {
         }
+
+        #region Custom IFSF implementations
+
+        public IfsfField48 MessageControlDataElements
+        {
+            get
+            {
+                if (IsFieldSet(Bit._048_MSG_CONTROL_DATA_ELEMENTS))
+                {
+                    return (IfsfField48) GetField(Bit._048_MSG_CONTROL_DATA_ELEMENTS);
+                }
+
+                return null;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    ClearField(48);
+                }
+
+                fields.Add(48, value);
+                bitmap[48] = true;
+            }
+        }
+
+        #endregion
+
+        #region Override methods
+
+        protected override IField CreateField(int field)
+        {
+            return field == Bit._048_MSG_CONTROL_DATA_ELEMENTS ? new IfsfField48() : base.CreateField(field);
+        }
+
+        #endregion
 
         #region Nested type: Bit
 
@@ -182,11 +215,11 @@ namespace OpenIso8583Net
             ///   Field 25 - Message Reason Code
             /// </summary>
             public const int _025_MSG_REASON_CODE = 25;
-            
+
             /// <summary>
-            ///   Field 26 - POS PIN Capture Code
+            ///   Field 26 - CARD Acceptor business code
             /// </summary>
-            public const int _026_POS_PIN_CAPTURE_CODE = 26;
+            public const int _026_CARD_ACCEPTOR_BUSINESS_CODE = 26;
 
             /// <summary>
             ///   Field 27 - Approval Code Length
@@ -266,7 +299,7 @@ namespace OpenIso8583Net
             /// <summary>
             ///   Field 48 - Private Additional Data
             /// </summary>
-            public const int _048_PRIVATE_ADDITIONAL_DATA = 48;
+            public const int _048_MSG_CONTROL_DATA_ELEMENTS = 48;
 
             /// <summary>
             ///   Field 49 - Transaction Currency Code
@@ -592,12 +625,12 @@ namespace OpenIso8583Net
             ///   Network Management Request Response
             /// </summary>
             public const int _1814_NWRK_MNG_REQ_RSP = 0x1814;
-            
+
             /// <summary>
             ///   Network Management Advice Request
             /// </summary>
             public const int _1820_NWRK_MNG_ADV_REQ = 0x1820;
-            
+
             /// <summary>
             ///   Network Management Advice Response
             /// </summary>
